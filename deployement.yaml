@@ -1,0 +1,26 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata: 
+  name: deploy
+spec: 
+  replicas: 10
+  selector:
+    matchLabels: 
+      app: dev
+  template:
+    metadata:
+      labels: 
+        app: dev
+    spec:
+      containers: 
+      - name: dep-pod
+        image: nginx:1.23
+
+        ports:
+        - containerPort: 80
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    

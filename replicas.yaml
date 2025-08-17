@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: chandan-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dev
+  template:
+    metadata:
+      labels: 
+        app: dev
+    spec:
+      containers:
+      - name: useless
+        image: ckzd/hello1:v1
+        ports:
+        - containerPort: 80
+       
+  
+
+
+
